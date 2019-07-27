@@ -1,4 +1,5 @@
 
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.WritableComparable;
@@ -8,10 +9,12 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 public class KeyStepThree implements WritableComparable<KeyStepThree> {
-    private Text        mFirstWord;
-    private Text        mSecondWord;
-    private IntWritable mDecade;
-    public  Text        mType;
+    private Text           mFirstWord;
+    private Text           mSecondWord;
+    private IntWritable    mDecade;
+    public  Text           mType;
+    private DoubleWritable mPMI = new DoubleWritable(0);
+
 
     /** @_WE_MUST_DEFAULT_CONSTRUCTOR_WHEN_IT_CLASS_USES_BY_HADOOP */
     public KeyStepThree(){
@@ -28,6 +31,14 @@ public class KeyStepThree implements WritableComparable<KeyStepThree> {
         mType       = newType;
     }
 
+    public void setPMI(DoubleWritable pmi){
+        mPMI = pmi;
+    }
+
+    public DoubleWritable getPMI(){
+        return mPMI;
+    }
+
     public Text getFirstWord() {return mFirstWord ;}
 
     public Text getSecondWord() {return mSecondWord ;}
@@ -36,11 +47,10 @@ public class KeyStepThree implements WritableComparable<KeyStepThree> {
 
     public int compareTo(KeyStepThree other) {
         final int    oDecade = other.getDecade().get();
-        final String oFirst  = other.getFirstWord().toString();
         final String oType   = other.mType.toString();
+        final double oPMI    = other.getPMI().get();
 
         final String myType   = mType.toString();
-        final String mySecond = mSecondWord.toString();
         final int myDecade    = mDecade.get();
         int ans;
 
@@ -48,7 +58,11 @@ public class KeyStepThree implements WritableComparable<KeyStepThree> {
             ans = (int) Math.signum(myDecade - oDecade);
         }else{ // Decades are equals
             if(myType.equals(oType)){
-                ans = mySecond.compareTo(oFirst);
+                if(myType.equals("PMI")){
+                    ans = 0;
+                }else{ // Both are NGRAM type
+                    ans = (int) Math.signum(oPMI - mPMI.get());
+                }
             }else{ // different type
                 if(myType.equals("PMI")) { // Other is NGRAM type
                     ans = -1;
@@ -57,7 +71,7 @@ public class KeyStepThree implements WritableComparable<KeyStepThree> {
                 }
             }
         }
-        return (int)Math.signum(ans) ;
+        return (int)Math.signum(ans);
     }
 
     public void write(DataOutput out) throws IOException {
