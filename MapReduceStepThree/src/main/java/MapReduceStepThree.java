@@ -34,7 +34,7 @@ public class MapReduceStepThree {
                 final double minPmi = Double.parseDouble(context.getConfiguration().get("minPmi"));
                 final double relMinPmi = Double.parseDouble(context.getConfiguration().get("relMinPmi"));
 
-                if (nPMI >= minPmi || relMinPmi >= relMinPmi) {
+                if (nPMI >= minPmi || rPMI >= relMinPmi) {
                     context.write(key, new Text("relative min PMI: " + rPMI + " min PMI: " + nPMI));
                 }
             }
