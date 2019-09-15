@@ -2,7 +2,7 @@
 
 ## Abstract
 This app automatically extract collocations from the Google 2-grams dataset using Amazon Elastic Map Reduce.
-- The data: ![project structure](http://www.commondatastorage.googleapis.com/books/syntactic-ngrams/index.html)
+- The data: http://www.commondatastorage.googleapis.com/books/syntactic-ngrams/index.html
 
 ## Collocations
 A collocation is a sequence of words or terms that co-occur more often than would be expected by chance. The identification of collocations - such as 'crystal clear', 'cosmetic surgery'.
