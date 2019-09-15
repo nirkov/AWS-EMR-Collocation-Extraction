@@ -13,6 +13,6 @@ PMI is a measure of association used in information theory and statistics.
 Given two words w1 and w2 and a corpus, we define normalized pmi as follows:
 
 ## 
-The purpose of this application is to learn and experiment with a map reduce calculation method, which required 3 different
-stages of map reduction to get the desired result for the entirely corpus (Google 2-grams dataset).
+The purpose of this application is to learn and experiment with a MapReduce method, which required 3 different
+stages of MapReduces to get the desired result for the entirely corpus (Google 2-grams dataset).
 In addition to experience with EMR - Elastic Map Reduce, which is a service offered by Amazon.
