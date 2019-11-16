@@ -20,19 +20,19 @@ In addition to experience with EMR - Elastic Map Reduce, which is a service offe
 
 ## How to run the project –
 1. Create in S3 the path
-- hadoop-map-reduce-collocation-extraction/HadoopMapReduceJars/
+   - hadoop-map-reduce-collocation-extraction/HadoopMapReduceJars/
    
 2. Upload the tree jar file to it.  
 
 3. Create in S3 the paths – 
-   • hadoop-map-reduce-collocation-extraction/OutputStepOne
-   • hadoop-map-reduce-collocation-extraction/OutputStepTwo
-   • hadoop-map-reduce-collocation-extraction/OutputStepThree
+   - hadoop-map-reduce-collocation-extraction/OutputStepOne
+   - hadoop-map-reduce-collocation-extraction/OutputStepTwo
+   - hadoop-map-reduce-collocation-extraction/OutputStepThree
   
 ### Run – 
-  ➢ Javac LocalApp.java 
-  ➢ Java LocalApp minPmi relMinPmi
+  - Javac LocalApp.java 
+  - Java LocalApp minPmi relMinPmi
   
 ### The output will be on –
-  • hadoop-map-reduce-collocation-extraction/OutputStepThree/subdir
+  - hadoop-map-reduce-collocation-extraction/OutputStepThree/subdir
   
