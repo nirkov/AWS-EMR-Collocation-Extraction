@@ -19,8 +19,8 @@ In addition to experience with EMR - Elastic Map Reduce, which is a service offe
 
 
 ## How to run the project –
-1. Create in S3 the path –
-   • hadoop-map-reduce-collocation-extraction/HadoopMapReduceJars/
+1. Create in S3 the path
+- hadoop-map-reduce-collocation-extraction/HadoopMapReduceJars/
    
 2. Upload the tree jar file to it.  
 
