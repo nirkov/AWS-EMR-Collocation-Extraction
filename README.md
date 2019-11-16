@@ -18,30 +18,30 @@ stages of MapReduces to get the desired result for the entirely corpus (Google 2
 In addition to experience with EMR - Elastic Map Reduce, which is a service offered by Amazon.
 
 
-How to run the project –
+## How to run the project –
 1. Create in S3 the path – hadoop-map-reduce-collocation-extraction/HadoopMapReduceJars/ and upload the tree jar file to it.
 2. Create in S3 the path – 
   • hadoop-map-reduce-collocation-extraction/OutputStepOne
   • hadoop-map-reduce-collocation-extraction/OutputStepTwo
   • hadoop-map-reduce-collocation-extraction/OutputStepThree
   
-Run – 
+### Run – 
   ➢ Javac LocalApp.java 
   ➢ Java LocalApp minPmi relMinPmi
   
-The output will be on –
+### The output will be on –
   • hadoop-map-reduce-collocation-extraction/OutputStepThree/subdir
   
-Job flow –
+### Job flow –
 1. Step one –
   At this stage of the work, the CE_Mapper extracts the required information from each data line and creates 4 different keys and sends   them to CE_Reducer with a value equal to occurrences which extruct from the line.
-    • CE_Mapper - creates 4 different keys as follow –
+    - CE_Mapper - creates 4 different keys as follow –
       a. Type DECADE - { * , *, decade} 
       b. Type FIRST - { w1 , *, decade} 
       c. Type SECOND - { * , w2, decade} 
       d. Type NGRAM - { w1 , w2, decade}
       
-    • CE_Reducer – 
+    - CE_Reducer – 
       - At this stage of the work, the CE_Reducer gets the keys in order so that when a
         pair of words w1, w2 comes to CE_Reducer, we move the pair to the next level when the corresponding value contains the                   information for c (w1), N and c (w1, w2).  
         
